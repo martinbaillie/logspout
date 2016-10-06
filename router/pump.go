@@ -63,7 +63,7 @@ func logDriverSupported(container *docker.Container) bool {
 }
 
 func useRawTerminal() bool {
-    return os.Getenv("RAW_TERMINAL") == "true"
+	return os.Getenv("RAW_TERMINAL") == "true"
 }
 
 func ignoreContainer(container *docker.Container) bool {
@@ -149,8 +149,8 @@ func (p *LogsPump) pumpLogs(event *docker.APIEvents, backlog bool) {
 	id := normalID(event.ID)
 	container, err := p.client.InspectContainer(id)
 	assert(err, "pump")
-    rawTerminal := useRawTerminal()
-    if container.Config.Tty && !rawTerminal {
+	rawTerminal := useRawTerminal()
+	if container.Config.Tty && !rawTerminal {
 		debug("pump.pumpLogs():", id, "ignored: tty enabled")
 		return
 	}
@@ -163,13 +163,13 @@ func (p *LogsPump) pumpLogs(event *docker.APIEvents, backlog bool) {
 		return
 	}
 
-    var tail string
+	var tail string
 	var sinceTime time.Time
 	if backlog {
-        tail = "all"
+		tail = "all"
 		sinceTime = time.Unix(0, 0)
 	} else {
-        tail = "0"
+		tail = "0"
 		sinceTime = time.Now()
 	}
 
@@ -196,7 +196,7 @@ func (p *LogsPump) pumpLogs(event *docker.APIEvents, backlog bool) {
 				Follow:       true,
 				Tail:         tail,
 				Since:        sinceTime.Unix(),
-                RawTerminal:  rawTerminal,
+				RawTerminal:  rawTerminal,
 			})
 			if err != nil {
 				debug("pump.pumpLogs():", id, "stopped with error:", err)
