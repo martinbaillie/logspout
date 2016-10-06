@@ -1,3 +1,17 @@
+# logspout + Rancher patches
+
+A quick fork of logspout to make it work with Rancher's tty settings. I will add any further Rancher enhancements here and document in this section.
+
+Using with Rancher:
+1. On your *logspout* container, ensure the following environment variable is set:
+```shell
+RAW_TERMINAL: true
+```
+2. Consider also ignoring Rancher system containers with:
+```shell
+EXCLUDE_LABEL: 'io.rancher.container.system'
+```
+
 # logspout
 
 [![CircleCI](https://img.shields.io/circleci/project/gliderlabs/logspout/release.svg)](https://circleci.com/gh/gliderlabs/logspout)
@@ -154,3 +168,4 @@ This project was made possible by [DigitalOcean](http://digitalocean.com) and [D
 
 BSD
 <img src="https://ga-beacon.appspot.com/UA-58928488-2/logspout/readme?pixel" />
+
