@@ -3,11 +3,11 @@
 A quick fork of logspout to make it work with Rancher's tty settings. I will add any further Rancher enhancements here and document in this section.
 
 Using with Rancher:
-1. On your *logspout* container, ensure the following environment variable is set:
+- On your *logspout* container, ensure the following environment variable is set:
 ```shell
 RAW_TERMINAL: true
 ```
-2. Consider also ignoring Rancher system containers with:
+- Consider also ignoring Rancher system containers with:
 ```shell
 EXCLUDE_LABEL: 'io.rancher.container.system'
 ```
