@@ -9,6 +9,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	docker "github.com/fsouza/go-dockerclient"
 )
 
 func init() {
